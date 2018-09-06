@@ -9,12 +9,12 @@ public class TankHealth : MonoBehaviour
     public Color m_FullHealthColor = Color.green;  
     public Color m_ZeroHealthColor = Color.red;    
     public GameObject m_ExplosionPrefab;
-    
-    /*
-    private AudioSource m_ExplosionAudio;          
-    private ParticleSystem m_ExplosionParticles;   
-    private float m_CurrentHealth;  
-    private bool m_Dead;            
+
+
+    private AudioSource m_ExplosionAudio;
+    private ParticleSystem m_ExplosionParticles;
+    private float m_CurrentHealth;
+    private bool m_Dead;
 
 
     private void Awake()
@@ -33,22 +33,53 @@ public class TankHealth : MonoBehaviour
 
         SetHealthUI();
     }
-    */
+
 
     public void TakeDamage(float amount)
     {
         // Adjust the tank's current health, update the UI based on the new health and check whether or not the tank is dead.
+
+        //Reduce player's health by the amount of damage taken
+        m_CurrentHealth -= amount;
+
+        //Update the health sliders surrounding the player, they should always be representative of the player's health
+        SetHealthUI();
+
+        //kill yourself
+        if(m_CurrentHealth <= 0f && !m_Dead)
+        {
+            OnDeath();
+        }
     }
 
 
     private void SetHealthUI()
     {
         // Adjust the value and colour of the slider.
+
+        m_Slider.value = m_CurrentHealth;
+
+        //Interpolate the colour of the bar between the chosen colours based on the current percentage of teh starting health
+        //The above comment is what is in the tutorial. I am assuming, as a professional, that this will change the colour from green to red.
+        m_FillImage.color = Color.Lerp(m_ZeroHealthColor, m_FullHealthColor, m_CurrentHealth / m_StartingHealth);
     }
 
 
     private void OnDeath()
     {
         // Play the effects for the death of the tank and deactivate it.
+
+        //In case you hadn't noticed the pearly gates
+        m_Dead = true;
+
+        //Move the fireworks to the tanks position and light the fuse
+        m_ExplosionParticles.transform.position = transform.position;
+        m_ExplosionParticles.gameObject.SetActive(true);
+
+        //Watch that puppy soar
+        m_ExplosionParticles.Play();
+
+        //Turn the tank off, it's dead
+        gameObject.SetActive(false);
     }
 }
