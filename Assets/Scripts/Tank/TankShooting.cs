@@ -30,14 +30,9 @@ public class TankShooting : MonoBehaviour
 
     private void Start()
     {
-        if(name == "Tank")
-            m_FireButton = "Fire" + 1;
+		m_FireButton = "Fire" + m_PlayerNumber; // Gabe's fix
 
-        else if (name == "Tank (1)")
-            m_FireButton = "Fire" + 2;
-
-
-        m_ChargeSpeed = (m_MaxLaunchForce - m_MinLaunchForce) / m_MaxChargeTime;
+		m_ChargeSpeed = (m_MaxLaunchForce - m_MinLaunchForce) / m_MaxChargeTime;
     }
 
 
