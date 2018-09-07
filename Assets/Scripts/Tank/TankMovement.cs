@@ -2,8 +2,9 @@
 
 public class TankMovement : MonoBehaviour
 {
-    public int m_PlayerNumber = 1;         
-    public float m_Speed = 12f;            
+
+    public float m_PlayerNumber = 2;
+    public float m_Speed = 12f; 
     public float m_TurnSpeed = 180f;       
     public AudioSource m_MovementAudio;    
     public AudioClip m_EngineIdling;       
@@ -36,10 +37,17 @@ public class TankMovement : MonoBehaviour
 
     private void Start()
     {
-        m_MovementAxisName = "Vertical" + m_PlayerNumber;
-        m_TurnAxisName = "Horizontal" + m_PlayerNumber;
+        if (name == "Tank")
+        {
+            m_MovementAxisName = "Vertical" + 1;
+            m_TurnAxisName = "Horizontal" + 1;
+        }
 
-        m_OriginalPitch = m_MovementAudio.pitch;
+        else if(name == "Tank (1)")
+        {
+            m_MovementAxisName = "Vertical" + 2;
+            m_TurnAxisName = "Horizontal" + 2;
+        }
     }
 
 
