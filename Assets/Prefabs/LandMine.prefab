@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4876549175077600}
   - component: {fileID: 33911518443397126}
-  - component: {fileID: 136534501812250306}
   - component: {fileID: 23326501938499284}
   - component: {fileID: 136134994158799484}
   - component: {fileID: 114203347497047918}
@@ -182,7 +181,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1237653295670352}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb6416b87496c1c48a98c580719c67f8, type: 3}
+  m_Script: {fileID: 11500000, guid: 8cb5d8862abc80c4388b4aee59a71850, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_TankMask:
@@ -205,19 +204,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0.57, z: 0}
---- !u!136 &136534501812250306
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1237653295670352}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &136967590120214534
 CapsuleCollider:
   m_ObjectHideFlags: 1
