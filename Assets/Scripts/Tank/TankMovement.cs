@@ -1,72 +1,50 @@
 ﻿using UnityEngine;
-
-public class TankMovement : MonoBehaviour
+ public class TankMovement : MonoBehaviour
 {
-
-    public float m_PlayerNumber = 2;
-    public float m_Speed = 12f; 
+    public int m_PlayerNumber = 1;         
+    public float m_Speed = 12f;            
     public float m_TurnSpeed = 180f;       
     public AudioSource m_MovementAudio;    
     public AudioClip m_EngineIdling;       
     public AudioClip m_EngineDriving;      
     public float m_PitchRange = 0.2f;
-
-    private string m_MovementAxisName;
+     private string m_MovementAxisName;
     private string m_TurnAxisName;
     private Rigidbody m_Rigidbody;
     private float m_MovementInputValue;
     private float m_TurnInputValue;
     private float m_OriginalPitch;
-
-    private void Awake()
+     private void Awake()
     {
         m_Rigidbody = GetComponent<Rigidbody>();
     }
-
-    private void OnEnable()
+     private void OnEnable()
     {
         m_Rigidbody.isKinematic = false;
         m_MovementInputValue = 0f;
         m_TurnInputValue = 0f;
     }
-
-    private void OnDisable()
+     private void OnDisable()
     {
         m_Rigidbody.isKinematic = true;
     }
-
-    private void Start()
+     private void Start()
     {
-        if (name == "Tank")
-        {
-            m_MovementAxisName = "Vertical" + 1;
-            m_TurnAxisName = "Horizontal" + 1;
-        }
-
-        else if(name == "Tank (1)")
-        {
-            m_MovementAxisName = "Vertical" + 2;
-            m_TurnAxisName = "Horizontal" + 2;
-        }
+        m_MovementAxisName = "Vertical" + m_PlayerNumber;
+        m_TurnAxisName = "Horizontal" + m_PlayerNumber;
+         m_OriginalPitch = m_MovementAudio.pitch;
     }
-
-
-    private void Update()
+     private void Update()
     {
         // Store the player's input and make sure the audio for the engine is playing.
-
-        m_MovementInputValue = Input.GetAxis(m_MovementAxisName);
+         m_MovementInputValue = Input.GetAxis(m_MovementAxisName);
         m_TurnInputValue = Input.GetAxis(m_TurnAxisName);
-
-        EngineAudio();
+         EngineAudio();
     }
-
-
-    private void EngineAudio()
+     private void EngineAudio()
     {
         // Play the correct audio clip based on whether or not the tank is moving and what audio is currently playing.
-
-        //If the tank isn't currently moving
+         //If the tank isn't currently moving
         if(Mathf.Abs (m_MovementInputValue) < 0.1f && Mathf.Abs (m_TurnInputValue) < 0.1f)
         {
             //If the current audio clip is the movement clip
@@ -78,8 +56,7 @@ public class TankMovement : MonoBehaviour
                 m_MovementAudio.Play();
             }
         }
-
-        else
+         else
         {
             //Otherwise, if the idling audip is playing and the tank starts moving, change the audio to the driving clip
             if(m_MovementAudio.clip == m_EngineIdling)
@@ -90,39 +67,26 @@ public class TankMovement : MonoBehaviour
             }
         }
     }
-
-
-    private void FixedUpdate()
+     private void FixedUpdate()
     {
         // Move and turn the tank.
-
-        Move();
+         Move();
         Turn();
-
-        //Now that's a hella simple function
+         //Now that's a hella simple function
     }
-
-
-    private void Move()
+     private void Move()
     {
         // Adjust the position of the tank based on the player's input.
-
-        //Creation of a vector using the direction the tank is currently facing. C# is stupidly simple I hate it
+         //Creation of a vector using the direction the tank is currently facing. C# is stupidly simple I hate it
         Vector3 movement = transform.forward * m_MovementInputValue * m_Speed * Time.deltaTime;
-
-        //Applying the movement to the object
+         //Applying the movement to the object
         m_Rigidbody.MovePosition(m_Rigidbody.position + movement);
     }
-
-
-    private void Turn()
+     private void Turn()
     {
         // Adjust the rotation of the tank based on the player's input.
-
-        float turn = m_TurnInputValue * m_TurnSpeed * Time.deltaTime;
-
-        Quaternion turnRotation = Quaternion.Euler(0f, turn, 0f);
-
-        m_Rigidbody.MoveRotation(m_Rigidbody.rotation * turnRotation);
+         float turn = m_TurnInputValue * m_TurnSpeed * Time.deltaTime;
+         Quaternion turnRotation = Quaternion.Euler(0f, turn, 0f);
+         m_Rigidbody.MoveRotation(m_Rigidbody.rotation * turnRotation);
     }
-}
+} 
