@@ -106,7 +106,7 @@ InputManager:
     descriptiveName: Fire keyboard button for player 1
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: space
+    positiveButton: left shift
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000
@@ -154,7 +154,7 @@ InputManager:
     descriptiveName: Fire keyboard button for player 2
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: enter
+    positiveButton: '[0]'
     altNegativeButton: 
     altPositiveButton: return
     gravity: 1000
