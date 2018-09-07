@@ -80,7 +80,7 @@ public class CameraControl : MonoBehaviour
 
 			Vector3 targetLocalPos = transform.InverseTransformPoint(m_Targets[i].position);
 			Vector3 desiredPosToTarget = targetLocalPos - desiredLocalPos;
-			size = Mathf.Max(size, Mathf.Abs(desiredLocalPos.y));
+			size = Mathf.Max(size, Mathf.Abs(desiredPosToTarget.y));
 			size = Mathf.Max(size, Mathf.Abs(desiredPosToTarget.x) / m_Camera.aspect);
 
 		}
