@@ -113,28 +113,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &866900656 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1866469937749438, guid: cc50dae0e85943e45a32ec18d7b5ae1a,
-    type: 2}
-  m_PrefabInternal: {fileID: 1643527784}
---- !u!114 &866900657
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 866900656}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8326b9dca06e5bc4885942c9371f51f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_StartingHealth: 100
-  m_Slider: {fileID: 0}
-  m_FillImage: {fileID: 0}
-  m_FullHealthColor: {r: 0, g: 1, b: 0, a: 1}
-  m_ZeroHealthColor: {r: 1, g: 0, b: 0, a: 1}
-  m_ExplosionPrefab: {fileID: 0}
 --- !u!4 &866900663 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4816581423538684, guid: cc50dae0e85943e45a32ec18d7b5ae1a,
@@ -182,12 +160,17 @@ Prefab:
     - target: {fileID: 224481530959532000, guid: cc50dae0e85943e45a32ec18d7b5ae1a,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224481530959532000, guid: cc50dae0e85943e45a32ec18d7b5ae1a,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224297608312125132, guid: cc50dae0e85943e45a32ec18d7b5ae1a,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc50dae0e85943e45a32ec18d7b5ae1a, type: 2}
@@ -234,12 +217,12 @@ Prefab:
     - target: {fileID: 224481530959532000, guid: cc50dae0e85943e45a32ec18d7b5ae1a,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224481530959532000, guid: cc50dae0e85943e45a32ec18d7b5ae1a,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1866469937749438, guid: cc50dae0e85943e45a32ec18d7b5ae1a, type: 2}
       propertyPath: m_Name
@@ -248,6 +231,11 @@ Prefab:
     - target: {fileID: 4816581423538684, guid: cc50dae0e85943e45a32ec18d7b5ae1a, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 225.706
+      objectReference: {fileID: 0}
+    - target: {fileID: 224297608312125132, guid: cc50dae0e85943e45a32ec18d7b5ae1a,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc50dae0e85943e45a32ec18d7b5ae1a, type: 2}
@@ -422,28 +410,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 312c52d27be2d2d42acea3ccebc4694b, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &2139256549 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1866469937749438, guid: cc50dae0e85943e45a32ec18d7b5ae1a,
-    type: 2}
-  m_PrefabInternal: {fileID: 1305506148}
---- !u!114 &2139256550
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2139256549}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8326b9dca06e5bc4885942c9371f51f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_StartingHealth: 100
-  m_Slider: {fileID: 0}
-  m_FillImage: {fileID: 0}
-  m_FullHealthColor: {r: 0, g: 1, b: 0, a: 1}
-  m_ZeroHealthColor: {r: 1, g: 0, b: 0, a: 1}
-  m_ExplosionPrefab: {fileID: 0}
 --- !u!4 &2139256556 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4816581423538684, guid: cc50dae0e85943e45a32ec18d7b5ae1a,
