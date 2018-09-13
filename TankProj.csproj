@@ -360,6 +360,8 @@
     <Compile Include="Assets\Scripts\Tank\TankMovement.cs" />
     <Compile Include="Assets\Scripts\Tank\TankShooting.cs" />
     <Compile Include="Assets\Scripts\UI\OnClick.cs" />
+    <Compile Include="Assets\Scripts\UI\TouchScreenController.cs" />
+    <Compile Include="Assets\Scripts\UI\TouchScreenFire.cs" />
     <Compile Include="Assets\Scripts\UI\UIDirectionControl.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
   </ItemGroup>

@@ -15,8 +15,13 @@ public class OnClick : MonoBehaviour {
 		
 	}
 
-    public void clickButton()
+    public void playGame()
     {
         SceneManager.LoadScene(1);
+    }
+
+    public void quitGame()
+    {
+        Application.Quit();
     }
 }
