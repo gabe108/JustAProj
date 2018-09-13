@@ -24,4 +24,10 @@ public class OnClick : MonoBehaviour {
     {
         Application.Quit();
     }
+
+    public void restartGame()
+    {
+        //SceneManager.UnloadScene(1);
+        SceneManager.LoadScene(1);
+    }
 }
