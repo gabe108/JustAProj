@@ -113,53 +113,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &46806573
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 46806574}
-  - component: {fileID: 46806575}
-  m_Layer: 0
-  m_Name: LandMines
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &46806574
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 46806573}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.000011435226, y: -0.9214974, z: -0.000015318394}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &46806575
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 46806573}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca2d30d1c9081e84ea87d2935813dd67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LandMinePrefab: {fileID: 0}
-  PrefabSpawnCount: 10
-  m_Mines: {fileID: 54223085011161116, guid: 4284c06e7c5a0854b9c256d15db5b1d8, type: 2}
-  m_NumberOfMines: 25
-  PlayerSpawnPoints:
-  - {fileID: 1428677360}
-  - {fileID: 300311072}
 --- !u!1 &300311071
 GameObject:
   m_ObjectHideFlags: 0
@@ -188,6 +141,64 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &603068954
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4103547973229570, guid: 583695e58bb8c5445a12cfb6709f2e7b, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.000011435226
+      objectReference: {fileID: 0}
+    - target: {fileID: 4103547973229570, guid: 583695e58bb8c5445a12cfb6709f2e7b, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.9214974
+      objectReference: {fileID: 0}
+    - target: {fileID: 4103547973229570, guid: 583695e58bb8c5445a12cfb6709f2e7b, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.000015318394
+      objectReference: {fileID: 0}
+    - target: {fileID: 4103547973229570, guid: 583695e58bb8c5445a12cfb6709f2e7b, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4103547973229570, guid: 583695e58bb8c5445a12cfb6709f2e7b, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4103547973229570, guid: 583695e58bb8c5445a12cfb6709f2e7b, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4103547973229570, guid: 583695e58bb8c5445a12cfb6709f2e7b, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4103547973229570, guid: 583695e58bb8c5445a12cfb6709f2e7b, type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114434938594818566, guid: 583695e58bb8c5445a12cfb6709f2e7b,
+        type: 2}
+      propertyPath: PlayerSpawnPoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 1428677360}
+    - target: {fileID: 114434938594818566, guid: 583695e58bb8c5445a12cfb6709f2e7b,
+        type: 2}
+      propertyPath: PlayerSpawnPoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 300311072}
+    - target: {fileID: 114434938594818566, guid: 583695e58bb8c5445a12cfb6709f2e7b,
+        type: 2}
+      propertyPath: m_Mines
+      value: 
+      objectReference: {fileID: 54175981382913872, guid: e60ce1f5f99e9924f83159502955f4f9,
+        type: 2}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 583695e58bb8c5445a12cfb6709f2e7b, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &606900880
 GameObject:
   m_ObjectHideFlags: 0
