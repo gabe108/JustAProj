@@ -491,7 +491,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LandMinePrefab: {fileID: 0}
   PrefabSpawnCount: 10
-  m_Mines: {fileID: 54223085011161116, guid: 4284c06e7c5a0854b9c256d15db5b1d8, type: 2}
+  m_Mines: {fileID: 54284513325540794, guid: 4284c06e7c5a0854b9c256d15db5b1d8, type: 2}
   m_NumberOfMines: 25
   PlayerSpawnPoints:
   - {fileID: 1454602752}
