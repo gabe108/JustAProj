@@ -57,7 +57,7 @@ public class TankShooting : MonoBehaviour
             }
 
             //Otherwise, if the fire button has just started being pressed,
-            else if (m_fire.enabled && m_lastFireState == false)
+            else if ((m_fire.enabled && m_lastFireState == false) || Input.GetButtonDown(m_FireButton))
             {
                 //then reset the fired flag and reset the launch force
                 m_Fired = false;
@@ -69,7 +69,7 @@ public class TankShooting : MonoBehaviour
             }
 
             //Otherwise, if the fire button is being held and the shell hasn't been launched yet
-            else if ((m_fire.enabled && m_lastFireState == true) && !m_Fired)
+            else if (((m_fire.enabled && m_lastFireState == true) || Input.GetButton(m_FireButton)) && !m_Fired)
             {
                 //Increment the launch force and update the slider
                 m_CurrentLaunchForce += m_ChargeSpeed * Time.deltaTime;
@@ -78,7 +78,7 @@ public class TankShooting : MonoBehaviour
             }
 
             //Otherwise, if the fire button is released and the shell hasn't been launched yet,
-            else if (!m_fire.enabled && !m_Fired)
+            else if ((!m_fire.enabled || Input.GetButtonUp(m_FireButton)) && !m_Fired)
             {
                 //Then you can finally fire the shell
                 Fire();

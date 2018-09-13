@@ -55,14 +55,13 @@ public class TankMovement : MonoBehaviour
                 m_TurnInputValue = 0;
             }
         }
-        //else
-        //{
+
         if ((m_MovementInputValue == 0 && m_TurnInputValue == 0) || m_touchMovement == null)
         {
             m_MovementInputValue = Input.GetAxis(m_MovementAxisName);
             m_TurnInputValue = Input.GetAxis(m_TurnAxisName);
         }
-        //}
+
         EngineAudio();
     }
     private void EngineAudio()
