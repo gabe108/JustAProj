@@ -8,6 +8,12 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/Johns Desert.unity
-    guid: fe9edca820053344eb9012e35e9cf688
+    path: Assets/Scenes/MenuState.unity
+    guid: 84e6c21e336f13948a693a807a2ebd71
+  - enabled: 1
+    path: Assets/Scenes/Jakes Desert.unity
+    guid: c7097632ee4779242937f270c5b9fc1b

@@ -567,7 +567,7 @@ MonoBehaviour:
   LandMinePrefab: {fileID: 0}
   PrefabSpawnCount: 10
   m_Mines: {fileID: 54223085011161116, guid: 6110a0fa426fe944ebd3784d8fbd14b2, type: 2}
-  m_NumberOfMines: 15
+  m_NumberOfMines: 30
 --- !u!4 &1563369131
 Transform:
   m_ObjectHideFlags: 0
