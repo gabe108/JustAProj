@@ -156,7 +156,10 @@ MonoBehaviour:
   LandMinePrefab: {fileID: 0}
   PrefabSpawnCount: 10
   m_Mines: {fileID: 54223085011161116, guid: e60ce1f5f99e9924f83159502955f4f9, type: 2}
-  m_NumberOfMines: 15
+  m_NumberOfMines: 25
+  PlayerSpawnPoints:
+  - {fileID: 1428677360}
+  - {fileID: 300311072}
 --- !u!1 &300311071
 GameObject:
   m_ObjectHideFlags: 0
