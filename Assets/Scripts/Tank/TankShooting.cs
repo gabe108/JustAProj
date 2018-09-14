@@ -10,8 +10,8 @@ enum ShellType
 public class TankShooting : MonoBehaviour
 {
     public int m_PlayerNumber = 1;       
-    public GameObject[] m_Shells;
-    public int[] m_Ammo;
+    [HideInInspector] public GameObject[] m_Shells;
+    [HideInInspector] public int[] m_Ammo;
     public Transform m_FireTransform;    
     public Slider m_AimSlider;           
     public AudioSource m_ShootingAudio;  
@@ -23,6 +23,8 @@ public class TankShooting : MonoBehaviour
 
     public Image m_fire = null;
 
+    public ShellTypeDisplay m_shellDisplay = null;
+
     private bool m_lastFireState = false;
 
     private string m_FireButton;
@@ -33,6 +35,8 @@ public class TankShooting : MonoBehaviour
 
     private KeyCode m_cycleShellLeft;
     private KeyCode m_cycleShellRight;
+
+
 
     private void OnEnable()
     {
@@ -86,11 +90,16 @@ public class TankShooting : MonoBehaviour
             }
 
             //Otherwise, if the fire button has just started being pressed,
-            else if ((m_fire.enabled && m_lastFireState == false) || Input.GetButtonDown(m_FireButton))
+            else if (((m_fire.enabled && m_lastFireState == false) || Input.GetButtonDown(m_FireButton)) && (m_Ammo[m_shellIndex] > 0 || m_Ammo[m_shellIndex] == -1))
             {
                 //then reset the fired flag and reset the launch force
                 m_Fired = false;
                 m_CurrentLaunchForce = m_MinLaunchForce;
+
+                if (m_Ammo[m_shellIndex] != -1)
+                {
+                    m_Ammo[m_shellIndex]--;
+                }
 
                 //Change the audio clip to the charging up clip and start playing it
                 m_ShootingAudio.clip = m_ChargingClip;
@@ -162,33 +171,11 @@ public class TankShooting : MonoBehaviour
         {
             if (Input.GetKeyDown(m_cycleShellLeft))
             {
-                if (m_shellIndex - 1 < 0)
-                {
-                    m_shellIndex = m_Shells.Length - 1;
-                }
-                else
-                {
-                    m_shellIndex--;
-                }
-                m_MaxLaunchForce = m_Shells[m_shellIndex].GetComponent<BaseShell>().m_maxLaunchForce;
-                m_MinLaunchForce = m_Shells[m_shellIndex].GetComponent<BaseShell>().m_minLaunchForce;
-
-                m_ChargeSpeed = (m_MaxLaunchForce - m_MinLaunchForce) / m_MaxChargeTime;
+                CycleShellLeft();
             }
             if (Input.GetKeyDown(m_cycleShellRight))
             {
-                if (m_shellIndex + 1 == m_Shells.Length)
-                {
-                    m_shellIndex = 0;
-                }
-                else
-                {
-                    m_shellIndex++;
-                }
-                m_MaxLaunchForce = m_Shells[m_shellIndex].GetComponent<BaseShell>().m_maxLaunchForce;
-                m_MinLaunchForce = m_Shells[m_shellIndex].GetComponent<BaseShell>().m_minLaunchForce;
-
-                m_ChargeSpeed = (m_MaxLaunchForce - m_MinLaunchForce) / m_MaxChargeTime;
+                CycleShellRight();
             }
 
         }
@@ -219,5 +206,40 @@ public class TankShooting : MonoBehaviour
 
         //Reset the launch force. This is a safeguard against the event of missing buttons
         m_CurrentLaunchForce = m_MinLaunchForce;
+    }
+
+    public void CycleShellLeft()
+    {
+        if (m_shellIndex - 1 < 0)
+        {
+            m_shellIndex = m_Shells.Length - 1;
+        }
+        else
+        {
+            m_shellIndex--;
+        }
+        m_MaxLaunchForce = m_Shells[m_shellIndex].GetComponent<BaseShell>().m_maxLaunchForce;
+        m_MinLaunchForce = m_Shells[m_shellIndex].GetComponent<BaseShell>().m_minLaunchForce;
+
+        m_ChargeSpeed = (m_MaxLaunchForce - m_MinLaunchForce) / m_MaxChargeTime;
+
+        m_shellDisplay.ChangeType(m_shellIndex);
+    }
+    public void CycleShellRight()
+    {
+        if (m_shellIndex + 1 == m_Shells.Length)
+        {
+            m_shellIndex = 0;
+        }
+        else
+        {
+            m_shellIndex++;
+        }
+        m_MaxLaunchForce = m_Shells[m_shellIndex].GetComponent<BaseShell>().m_maxLaunchForce;
+        m_MinLaunchForce = m_Shells[m_shellIndex].GetComponent<BaseShell>().m_minLaunchForce;
+
+        m_ChargeSpeed = (m_MaxLaunchForce - m_MinLaunchForce) / m_MaxChargeTime;
+
+        m_shellDisplay.ChangeType(m_shellIndex);
     }
 }

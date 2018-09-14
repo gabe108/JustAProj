@@ -27,6 +27,7 @@ public class TankManager
 		m_Shooting.m_PlayerNumber = m_PlayerNumber;
 
         m_Shooting.m_Shells = shells;
+        
 
         if (m_PlayerNumber == 1)
         {
@@ -39,6 +40,11 @@ public class TankManager
             if (fireButton != null)
             {
                 m_Shooting.m_fire = fireButton.GetComponent<UnityEngine.UI.Image>();
+            }
+            GameObject ShellCycleTouch = GameObject.Find("TouchScreenControls");
+            if (ShellCycleTouch != null)
+            {
+                ShellCycleTouch.GetComponent<TouchScreenControls>().m_tank = m_Instance;
             }
         }
 

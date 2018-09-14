@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public GameObject m_TankPrefab;         
     public TankManager[] m_Tanks;
     public GameObject[] m_shells;
+    public GameObject m_touchScreenControls;
 
 
     private int m_RoundNumber;              
@@ -85,6 +86,15 @@ public class GameManager : MonoBehaviour
 
 		m_RoundNumber++;
 		m_MessageText.text = "ROUND " + m_RoundNumber;
+
+        if (m_touchScreenControls)
+        {
+            if (m_touchScreenControls.activeSelf == true)
+            {
+                m_touchScreenControls.SetActive(false);
+            }
+        }
+
         yield return m_StartWait;
     }
 
@@ -94,7 +104,15 @@ public class GameManager : MonoBehaviour
 		EnableTankControl();
 		m_MessageText.text = "";
 
-		while(!OneTankLeft())
+        if (m_touchScreenControls)
+        {
+            if (m_touchScreenControls.activeSelf == false)
+            {
+                m_touchScreenControls.SetActive(true);
+            }
+        }
+
+        while (!OneTankLeft())
 		{
 			yield return null;
 		}
@@ -112,6 +130,15 @@ public class GameManager : MonoBehaviour
 
 		m_GameWinner = GetGameWinner();
 		m_MessageText.text = EndMessage();
+
+        if (m_touchScreenControls)
+        {
+            if (m_touchScreenControls.activeSelf == true)
+            {
+                m_touchScreenControls.SetActive(false);
+            }
+        }
+
         yield return m_EndWait;
     }
 
