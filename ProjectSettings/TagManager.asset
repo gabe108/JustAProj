@@ -7,6 +7,11 @@ TagManager:
   - LandMinePrefab
   - ShellExplosionParticle
   - LandMines
+  - Enemy
+  - Asteroid 1
+  - Asteroid 2
+  - Asteroid 3
+  - Ground
   layers:
   - Default
   - TransparentFX
