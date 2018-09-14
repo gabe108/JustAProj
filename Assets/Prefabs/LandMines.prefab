@@ -51,7 +51,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca2d30d1c9081e84ea87d2935813dd67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LandMinePrefab: {fileID: 0}
   PrefabSpawnCount: 10
   m_Mines: {fileID: 54090606962005994, guid: e60ce1f5f99e9924f83159502955f4f9, type: 2}
   m_NumberOfMines: 25

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class RandomMines : MonoBehaviour
 {
-    public GameObject LandMinePrefab = null;
     public int PrefabSpawnCount = 10;
     public Rigidbody m_Mines;
     public int m_NumberOfMines = 15;
@@ -21,8 +20,8 @@ public class RandomMines : MonoBehaviour
     void Start()
     {
         System.Random rnd = new System.Random();
-
-        for (int i = 1; i < m_NumberOfMines; i++)
+		m_Mines = GameObject.FindWithTag("LandMinePrefab").GetComponent<Rigidbody>();
+		for (int i = 1; i < m_NumberOfMines; i++)
         {
             int x = rnd.Next(-50, 30);
             int z = rnd.Next(-50, 30);

@@ -5,7 +5,7 @@ using UnityEngine;
 public class MineExplosion : MonoBehaviour
 {
     public LayerMask m_TankMask;
-    public ParticleSystem m_ExplosionParticles;
+    //public ParticleSystem m_ExplosionParticles;
 
     public float m_ExplosionRadius = 5f;
     public float m_ExplosionForce = 1000f;
@@ -13,8 +13,9 @@ public class MineExplosion : MonoBehaviour
 
     // Use this for initialization
     void Start ()
-    {
-        gameObject.SetActive(true);
+	{
+		//m_ExplosionParticles = GameObject.FindWithTag("LandMines").GetComponentInChildren<ParticleSystem>();
+		gameObject.SetActive(true);
 	}
 
     private void OnTriggerEnter(Collider other)
@@ -46,14 +47,14 @@ public class MineExplosion : MonoBehaviour
 
             //Deal the damage to the tank
             targetHealth.TakeDamage(damage);
-        }
+		}
 
 
         //Unparent the particles from the shells
-        m_ExplosionParticles.transform.parent = null;
+        //m_ExplosionParticles.transform.parent = null;
 
         //Play the particle effect
-        m_ExplosionParticles.Play();
+        //m_ExplosionParticles.Play();
 
         ////Once the animation has finished, move on to destroy the object underneath them
         //Destroy(m_ExplosionParticles.gameObject, m_ExplosionParticles.duration);
