@@ -5,14 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class OnClick : MonoBehaviour {
 
+    public GameObject pauseMenu;
+
 	// Use this for initialization
 	void Start () {
-		
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+        
 	}
 
     public void playGame()
@@ -27,7 +29,8 @@ public class OnClick : MonoBehaviour {
 
     public void restartGame()
     {
-        //SceneManager.UnloadScene(1);
+        //Reloads the game
         SceneManager.LoadScene(1);
+        Time.timeScale = 1.0f;
     }
 }

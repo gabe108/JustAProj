@@ -323,6 +323,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a77fdcebbe85f14ab98dfad5da07c20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_minLaunchForce: 15
+  m_maxLaunchForce: 30
   m_TankMask:
     serializedVersion: 2
     m_Bits: 512
