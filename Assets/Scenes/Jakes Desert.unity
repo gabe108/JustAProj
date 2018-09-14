@@ -444,6 +444,7 @@ MonoBehaviour:
   m_shells:
   - {fileID: 1550172028634986, guid: d756a962e3ecdc046a7d93bdc1c604fb, type: 2}
   - {fileID: 1459724438421206, guid: 4284c06e7c5a0854b9c256d15db5b1d8, type: 2}
+  - {fileID: 1099881995981348, guid: 0e31b175fe1cea44faf4ece896172c4c, type: 2}
 --- !u!4 &157382110
 Transform:
   m_ObjectHideFlags: 0
@@ -568,6 +569,18 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 486730, guid: 89e78efe92dfe5a42837b392cdb0bf9e, type: 2}
       propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19846844, guid: 89e78efe92dfe5a42837b392cdb0bf9e, type: 2}
+      propertyPath: InitialModule.startSizeY.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 19846844, guid: 89e78efe92dfe5a42837b392cdb0bf9e, type: 2}
+      propertyPath: InitialModule.startSizeZ.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 113952, guid: 89e78efe92dfe5a42837b392cdb0bf9e, type: 2}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

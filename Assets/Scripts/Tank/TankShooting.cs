@@ -5,6 +5,7 @@ enum ShellType
 {
     BASE_SHELL = 0,
     LAND_MINE = 1,
+    BALLOON = 2,
 }
 
 public class TankShooting : MonoBehaviour
@@ -69,6 +70,7 @@ public class TankShooting : MonoBehaviour
 
         m_Ammo[(int)ShellType.BASE_SHELL] = -1;
         m_Ammo[(int)ShellType.LAND_MINE] = 2;
+        m_Ammo[(int)ShellType.BALLOON] = 3;
     }
 
 
