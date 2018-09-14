@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MineExplosion : MonoBehaviour
+public class MineExplosion : BaseShell
 {
     public LayerMask m_TankMask;
     //public ParticleSystem m_ExplosionParticles;
@@ -11,44 +11,51 @@ public class MineExplosion : MonoBehaviour
     public float m_ExplosionForce = 1000f;
     public float m_MaxDamage = 200f;
 
+    private bool m_active = true;
+    private float m_timer = 0;
+
     // Use this for initialization
     void Start ()
 	{
 		//m_ExplosionParticles = GameObject.FindWithTag("LandMines").GetComponentInChildren<ParticleSystem>();
 		gameObject.SetActive(true);
+        m_maxLaunchForce = 0.0f;
+        m_minLaunchForce = 0.0f;
 	}
 
     private void OnTriggerEnter(Collider other)
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, m_ExplosionRadius, m_TankMask);
-
-        //Iterate through them ALL AND HURT THEM
-        for (int i = 0; i < colliders.Length; i++)
+        if (m_active)
         {
-            //Find their rigid bodies
-            Rigidbody targetRigidBody = colliders[i].GetComponent<Rigidbody>();
+            Collider[] colliders = Physics.OverlapSphere(transform.position, m_ExplosionRadius, m_TankMask);
 
-            //If they don't have a rigid body, we can't do anything with them, move onto the next collided object
-            if (!targetRigidBody)
-                continue;
+            //Iterate through them ALL AND HURT THEM
+            for (int i = 0; i < colliders.Length; i++)
+            {
+                //Find their rigid bodies
+                Rigidbody targetRigidBody = colliders[i].GetComponent<Rigidbody>();
 
-            //Add an explosion force
-            targetRigidBody.AddExplosionForce(m_ExplosionForce, transform.position, m_ExplosionRadius);
+                //If they don't have a rigid body, we can't do anything with them, move onto the next collided object
+                if (!targetRigidBody)
+                    continue;
 
-            //Find the tankHealth script associated with the target gameobject using GetComponent
-            TankHealth targetHealth = targetRigidBody.GetComponent<TankHealth>();
+                //Add an explosion force
+                targetRigidBody.AddExplosionForce(m_ExplosionForce, transform.position, m_ExplosionRadius);
 
-            //If the object does not have a tankHealth script, we move on to the next object
-            if (!targetHealth)
-                continue;
+                //Find the tankHealth script associated with the target gameobject using GetComponent
+                TankHealth targetHealth = targetRigidBody.GetComponent<TankHealth>();
 
-            //Calculate the amount of damage the object should take based on how close it is to the explosion's center
-            float damage = CalculateDamage(targetRigidBody.position);
+                //If the object does not have a tankHealth script, we move on to the next object
+                if (!targetHealth)
+                    continue;
 
-            //Deal the damage to the tank
-            targetHealth.TakeDamage(damage);
-		}
+                //Calculate the amount of damage the object should take based on how close it is to the explosion's center
+                float damage = CalculateDamage(targetRigidBody.position);
 
+                //Deal the damage to the tank
+                targetHealth.TakeDamage(damage);
+            }
+        }
 
         //Unparent the particles from the shells
         //m_ExplosionParticles.transform.parent = null;
@@ -92,6 +99,20 @@ public class MineExplosion : MonoBehaviour
     // Update is called once per frame
     void Update ()
     {
-		
+		if (!m_active)
+        {
+            m_timer -= Time.deltaTime;
+            if (m_timer < 0)
+            {
+                m_active = true;
+            }
+        }
 	}
+
+    public override void Fire(Vector3 position, Quaternion rotation, Vector3 velocity, GameObject tank)
+    {
+        gameObject.transform.position = tank.transform.position;
+        m_timer = 6;
+        m_active = false;
+    }
 }

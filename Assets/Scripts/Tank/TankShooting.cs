@@ -4,6 +4,7 @@ using UnityEngine.UI;
 enum ShellType
 {
     BASE_SHELL = 0,
+    LAND_MINE = 1,
 }
 
 public class TankShooting : MonoBehaviour
@@ -44,6 +45,9 @@ public class TankShooting : MonoBehaviour
     {
 		m_FireButton = "Fire" + m_PlayerNumber; // Gabe's fix
 
+        m_MaxLaunchForce = m_Shells[0].GetComponent<BaseShell>().m_maxLaunchForce;
+        m_MinLaunchForce = m_Shells[0].GetComponent<BaseShell>().m_minLaunchForce;
+
         m_ChargeSpeed = (m_MaxLaunchForce - m_MinLaunchForce) / m_MaxChargeTime;
 
         if (m_PlayerNumber == 1)
@@ -59,10 +63,8 @@ public class TankShooting : MonoBehaviour
 
         m_Ammo = new int[m_Shells.Length];
 
-        if (m_Ammo.Length > 0)
-        {
-            m_Ammo[0] = -1;
-        }
+        m_Ammo[(int)ShellType.BASE_SHELL] = -1;
+        m_Ammo[(int)ShellType.LAND_MINE] = 2;
     }
 
 
@@ -76,7 +78,7 @@ public class TankShooting : MonoBehaviour
         if (m_fire != null)
         {
             //If the max force has been exceeded and the shell hasn't yet been fired,
-            if (m_CurrentLaunchForce >= m_MaxLaunchForce && !m_Fired)
+            if ((m_CurrentLaunchForce >= m_MaxLaunchForce || m_MaxLaunchForce == 0) && !m_Fired)
             {
                 //then fire the shell using the max force
                 m_CurrentLaunchForce = m_MaxLaunchForce;
@@ -116,7 +118,7 @@ public class TankShooting : MonoBehaviour
         else
         {
             //If the max force has been exceeded and the shell hasn't yet been fired,
-            if (m_CurrentLaunchForce >= m_MaxLaunchForce && !m_Fired)
+            if ((m_CurrentLaunchForce >= m_MaxLaunchForce || m_MaxLaunchForce == 0) && !m_Fired)
             {
                 //then fire the shell using the max force
                 m_CurrentLaunchForce = m_MaxLaunchForce;
@@ -168,6 +170,10 @@ public class TankShooting : MonoBehaviour
                 {
                     m_shellIndex--;
                 }
+                m_MaxLaunchForce = m_Shells[m_shellIndex].GetComponent<BaseShell>().m_maxLaunchForce;
+                m_MinLaunchForce = m_Shells[m_shellIndex].GetComponent<BaseShell>().m_minLaunchForce;
+
+                m_ChargeSpeed = (m_MaxLaunchForce - m_MinLaunchForce) / m_MaxChargeTime;
             }
             if (Input.GetKeyDown(m_cycleShellRight))
             {
@@ -179,6 +185,10 @@ public class TankShooting : MonoBehaviour
                 {
                     m_shellIndex++;
                 }
+                m_MaxLaunchForce = m_Shells[m_shellIndex].GetComponent<BaseShell>().m_maxLaunchForce;
+                m_MinLaunchForce = m_Shells[m_shellIndex].GetComponent<BaseShell>().m_minLaunchForce;
+
+                m_ChargeSpeed = (m_MaxLaunchForce - m_MinLaunchForce) / m_MaxChargeTime;
             }
 
         }
@@ -198,7 +208,7 @@ public class TankShooting : MonoBehaviour
         //Create an instance of the shell and store a reference to it's rigidBody
         //Rigidbody shellInstance = Instantiate(m_Shell, m_FireTransform.position, m_FireTransform.rotation) as Rigidbody;
         GameObject shellInstance = Instantiate(m_Shells[m_shellIndex]);
-        shellInstance.GetComponent<BaseShell>().Fire(m_FireTransform.position, m_FireTransform.rotation, m_CurrentLaunchForce * m_FireTransform.forward);
+        shellInstance.GetComponent<BaseShell>().Fire(m_FireTransform.position, m_FireTransform.rotation, m_CurrentLaunchForce * m_FireTransform.forward, gameObject);
 
         //Set the shells velocity to the launch force in the fire positions forward direction.
         //shellInstance.velocity = m_CurrentLaunchForce * m_FireTransform.forward;

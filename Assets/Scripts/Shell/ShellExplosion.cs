@@ -15,6 +15,9 @@ public class ShellExplosion : BaseShell
     {
         Destroy(gameObject, m_MaxLifeTime);
         m_ExplosionParticles.Stop();
+
+        m_minLaunchForce = 15;
+        m_maxLaunchForce = 30;
     }
 
 
