@@ -45,13 +45,13 @@ public class RandomMines : MonoBehaviour
 				MinesPosition = new Vector3(x, -0.151f, z);
 				if (MinesPosition.x > -42.0f && MinesPosition.x < 30.0f)
                 {
-                Rigidbody mineInstance = Instantiate(m_Mines, MinesPosition, new Quaternion());
-                    m_PreviousMinePos = MinesPosition;
+					Instantiate(m_Mines, MinesPosition, new Quaternion());
+								m_PreviousMinePos = MinesPosition;
                 }
             }
             else
             {
-                Rigidbody mineInstance = Instantiate(m_Mines, MinesPosition, new Quaternion());
+               Instantiate(m_Mines, MinesPosition, new Quaternion());
             }
         }
     }

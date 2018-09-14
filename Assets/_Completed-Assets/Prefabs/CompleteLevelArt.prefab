@@ -110,9 +110,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 437402}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4
@@ -231,10 +231,10 @@ GameObject:
   - component: {fileID: 444496}
   - component: {fileID: 3357074}
   - component: {fileID: 2393758}
-  - component: {fileID: 6476316}
-  m_Layer: 0
+  - component: {fileID: 65874032321512516}
+  m_Layer: 8
   m_Name: GroundPlane
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -404,7 +404,7 @@ GameObject:
   - component: {fileID: 427982}
   - component: {fileID: 3344530}
   - component: {fileID: 2395782}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Concrete (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -421,7 +421,7 @@ GameObject:
   - component: {fileID: 488676}
   - component: {fileID: 3358142}
   - component: {fileID: 2301586}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Concrete (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -456,7 +456,7 @@ GameObject:
   - component: {fileID: 495424}
   - component: {fileID: 3395458}
   - component: {fileID: 2372800}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Concrete (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1165,7 +1165,7 @@ GameObject:
   - component: {fileID: 472192}
   - component: {fileID: 3399678}
   - component: {fileID: 2343152}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Concrete (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1361,7 +1361,7 @@ GameObject:
   - component: {fileID: 483038}
   - component: {fileID: 3341426}
   - component: {fileID: 2320120}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Concrete (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1643,7 +1643,7 @@ GameObject:
   - component: {fileID: 465990}
   - component: {fileID: 3315378}
   - component: {fileID: 2323412}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Concrete
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1763,7 +1763,7 @@ GameObject:
   - component: {fileID: 414690}
   - component: {fileID: 3384564}
   - component: {fileID: 2334010}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Concrete (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1979,7 +1979,7 @@ GameObject:
   - component: {fileID: 471332}
   - component: {fileID: 3387242}
   - component: {fileID: 2302914}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Concrete (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2085,7 +2085,7 @@ GameObject:
   - component: {fileID: 447666}
   - component: {fileID: 3353026}
   - component: {fileID: 2317188}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Concrete (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8223,20 +8223,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 152192}
   m_Mesh: {fileID: 4300000, guid: a678ab9f67b4ce84093be35214bdb92d, type: 3}
---- !u!64 &6476316
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 111698}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 126dbcddb53386c4f969fdf0c555e822, type: 3}
 --- !u!65 &6500506
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -10779,3 +10765,15 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 171356}
   m_IsPrefabParent: 1
+--- !u!65 &65874032321512516
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 111698}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 99.99999, y: 0, z: 99.99999}
+  m_Center: {x: 0, y: 0, z: 0}

@@ -61,13 +61,10 @@ public class MineExplosion : BaseShell
         //m_ExplosionParticles.transform.parent = null;
 
         //Play the particle effect
-        //m_ExplosionParticles.Play();
+		//m_ExplosionParticles.Play();
 
         ////Once the animation has finished, move on to destroy the object underneath them
         //Destroy(m_ExplosionParticles.gameObject, m_ExplosionParticles.duration);
-
-        ////Destroy the bullet now that all of it's functions have finished
-        //Destroy(gameObject);
     }
 
     private float CalculateDamage(Vector3 targetPosition)
