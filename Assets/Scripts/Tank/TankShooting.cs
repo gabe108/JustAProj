@@ -1,10 +1,16 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+enum ShellType
+{
+    BASE_SHELL = 0,
+}
+
 public class TankShooting : MonoBehaviour
 {
     public int m_PlayerNumber = 1;       
-    public Rigidbody m_Shell;            
+    public GameObject[] m_Shells;
+    public int[] m_Ammo;
     public Transform m_FireTransform;    
     public Slider m_AimSlider;           
     public AudioSource m_ShootingAudio;  
@@ -22,7 +28,10 @@ public class TankShooting : MonoBehaviour
     private float m_CurrentLaunchForce;
     private float m_ChargeSpeed;
     private bool m_Fired = true;
+    private int m_shellIndex;
 
+    private KeyCode m_cycleShellLeft;
+    private KeyCode m_cycleShellRight;
 
     private void OnEnable()
     {
@@ -36,6 +45,24 @@ public class TankShooting : MonoBehaviour
 		m_FireButton = "Fire" + m_PlayerNumber; // Gabe's fix
 
         m_ChargeSpeed = (m_MaxLaunchForce - m_MinLaunchForce) / m_MaxChargeTime;
+
+        if (m_PlayerNumber == 1)
+        {
+            m_cycleShellLeft = KeyCode.Q;
+            m_cycleShellRight = KeyCode.E;
+        }
+        else
+        {
+            m_cycleShellLeft = KeyCode.Keypad1;
+            m_cycleShellRight = KeyCode.Keypad2;
+        }
+
+        m_Ammo = new int[m_Shells.Length];
+
+        if (m_Ammo.Length > 0)
+        {
+            m_Ammo[0] = -1;
+        }
     }
 
 
@@ -97,11 +124,16 @@ public class TankShooting : MonoBehaviour
             }
 
             //Otherwise, if the fire button has just started being pressed,
-            else if (Input.GetButtonDown(m_FireButton))
+            else if (Input.GetButtonDown(m_FireButton) && (m_Ammo[m_shellIndex] > 0 || m_Ammo[m_shellIndex] == -1))
             {
                 //then reset the fired flag and reset the launch force
                 m_Fired = false;
                 m_CurrentLaunchForce = m_MinLaunchForce;
+
+                if (m_Ammo[m_shellIndex] != -1)
+                {
+                    m_Ammo[m_shellIndex]--;
+                }
 
                 //Change the audio clip to the charging up clip and start playing it
                 m_ShootingAudio.clip = m_ChargingClip;
@@ -124,6 +156,32 @@ public class TankShooting : MonoBehaviour
                 Fire();
             }
         }
+        if (m_Fired)
+        {
+            if (Input.GetKeyDown(m_cycleShellLeft))
+            {
+                if (m_shellIndex - 1 < 0)
+                {
+                    m_shellIndex = m_Shells.Length - 1;
+                }
+                else
+                {
+                    m_shellIndex--;
+                }
+            }
+            if (Input.GetKeyDown(m_cycleShellRight))
+            {
+                if (m_shellIndex + 1 == m_Shells.Length)
+                {
+                    m_shellIndex = 0;
+                }
+                else
+                {
+                    m_shellIndex++;
+                }
+            }
+
+        }
     }
 
 
@@ -138,10 +196,12 @@ public class TankShooting : MonoBehaviour
             m_fire.enabled = false;
 
         //Create an instance of the shell and store a reference to it's rigidBody
-        Rigidbody shellInstance = Instantiate(m_Shell, m_FireTransform.position, m_FireTransform.rotation) as Rigidbody;
+        //Rigidbody shellInstance = Instantiate(m_Shell, m_FireTransform.position, m_FireTransform.rotation) as Rigidbody;
+        GameObject shellInstance = Instantiate(m_Shells[m_shellIndex]);
+        shellInstance.GetComponent<BaseShell>().Fire(m_FireTransform.position, m_FireTransform.rotation, m_CurrentLaunchForce * m_FireTransform.forward);
 
         //Set the shells velocity to the launch force in the fire positions forward direction.
-        shellInstance.velocity = m_CurrentLaunchForce * m_FireTransform.forward;
+        //shellInstance.velocity = m_CurrentLaunchForce * m_FireTransform.forward;
 
         //Change the audio clip to the firing soundclip and play it
         m_ShootingAudio.clip = m_FireClip;

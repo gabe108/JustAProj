@@ -11,7 +11,8 @@ public class GameManager : MonoBehaviour
     public CameraControl m_CameraControl;   
     public Text m_MessageText;              
     public GameObject m_TankPrefab;         
-    public TankManager[] m_Tanks;           
+    public TankManager[] m_Tanks;
+    public GameObject[] m_shells;
 
 
     private int m_RoundNumber;              
@@ -40,7 +41,7 @@ public class GameManager : MonoBehaviour
             m_Tanks[i].m_Instance =
                 Instantiate(m_TankPrefab, m_Tanks[i].m_SpawnPoint.position, m_Tanks[i].m_SpawnPoint.rotation) as GameObject;
             m_Tanks[i].m_PlayerNumber = i + 1;
-            m_Tanks[i].Setup();
+            m_Tanks[i].Setup(m_shells);
         }
     }
 

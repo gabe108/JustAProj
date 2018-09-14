@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class ShellExplosion : MonoBehaviour
+public class ShellExplosion : BaseShell
 {
     public LayerMask m_TankMask;
     public ParticleSystem m_ExplosionParticles;       
@@ -11,9 +11,10 @@ public class ShellExplosion : MonoBehaviour
     public float m_ExplosionRadius = 5f;              
 
 
-    private void Start()
+    protected void Start()
     {
         Destroy(gameObject, m_MaxLifeTime);
+        m_ExplosionParticles.Stop();
     }
 
 

@@ -17,7 +17,7 @@ public class TankManager
 	private GameObject m_CanvasGameObject;
 
 
-	public void Setup()
+	public void Setup(GameObject[] shells)
 	{
 		m_Movement = m_Instance.GetComponent<TankMovement>();
 		m_Shooting = m_Instance.GetComponent<TankShooting>();
@@ -25,6 +25,8 @@ public class TankManager
 
 		m_Movement.m_PlayerNumber = m_PlayerNumber;
 		m_Shooting.m_PlayerNumber = m_PlayerNumber;
+
+        m_Shooting.m_Shells = shells;
 
         if (m_PlayerNumber == 1)
         {
