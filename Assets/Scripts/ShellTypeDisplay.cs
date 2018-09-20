@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class ShellTypeDisplay : MonoBehaviour
 {
-    public Transform m_camera = null;
-    public Sprite[] m_shellTypes = null;
+    public string[] m_shellTypes = null;
 
-    private SpriteRenderer m_sprite = null;
+    private Transform m_camera = null;
+    private TextMesh m_text = null;
 	// Use this for initialization
 	void Start ()
     {
-        m_sprite = GetComponent<SpriteRenderer>();
+        m_text = GetComponent<TextMesh>();
         m_camera = GameObject.Find("Main Camera").transform;
 	}
 	
@@ -23,6 +23,6 @@ public class ShellTypeDisplay : MonoBehaviour
 
     public void ChangeType(int index)
     {
-        m_sprite.sprite = m_shellTypes[index];
+        m_text.text = m_shellTypes[index];
     }
 }

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-enum ShellType
+public enum ShellType
 {
     BASE_SHELL = 0,
     LAND_MINE = 1,
@@ -70,7 +70,7 @@ public class TankShooting : MonoBehaviour
 
         m_Ammo[(int)ShellType.BASE_SHELL] = -1;
         m_Ammo[(int)ShellType.LAND_MINE] = 2;
-        m_Ammo[(int)ShellType.BALLOON] = 3;
+        //m_Ammo[(int)ShellType.BALLOON] = 3;
     }
 
 
@@ -243,5 +243,13 @@ public class TankShooting : MonoBehaviour
         m_ChargeSpeed = (m_MaxLaunchForce - m_MinLaunchForce) / m_MaxChargeTime;
 
         m_shellDisplay.ChangeType(m_shellIndex);
+    }
+
+    public void AddAmmo(ShellType shellType)
+    {
+        if ((int)shellType <= m_Ammo.Length && shellType >= 0)
+        {
+            m_Ammo[(int)shellType]++;
+        }
     }
 }
