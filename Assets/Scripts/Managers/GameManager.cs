@@ -87,7 +87,7 @@ public class GameManager : MonoBehaviour
 		m_RoundNumber++;
 		m_MessageText.text = "ROUND " + m_RoundNumber;
 
-        if (m_touchScreenControls)
+        if (m_touchScreenControls && (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer))
         {
             if (m_touchScreenControls.activeSelf == true)
             {
@@ -104,7 +104,7 @@ public class GameManager : MonoBehaviour
 		EnableTankControl();
 		m_MessageText.text = "";
 
-        if (m_touchScreenControls)
+        if (m_touchScreenControls && (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer))
         {
             if (m_touchScreenControls.activeSelf == false)
             {
@@ -131,7 +131,7 @@ public class GameManager : MonoBehaviour
 		m_GameWinner = GetGameWinner();
 		m_MessageText.text = EndMessage();
 
-        if (m_touchScreenControls)
+        if (m_touchScreenControls && (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer))
         {
             if (m_touchScreenControls.activeSelf == true)
             {

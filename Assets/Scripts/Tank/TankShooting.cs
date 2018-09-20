@@ -247,7 +247,7 @@ public class TankShooting : MonoBehaviour
 
     public void AddAmmo(ShellType shellType)
     {
-        if ((int)shellType <= m_Ammo.Length && shellType >= 0)
+        if ((int)shellType <= m_Ammo.Length)
         {
             m_Ammo[(int)shellType]++;
         }
